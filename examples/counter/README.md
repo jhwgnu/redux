@@ -1,35 +1,36 @@
 # Redux Counter Example
 
-This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
+리듀서는 이전 상태와 액션을 받아서 다음 상태를 반환하는 함수 <br>
 
-Projects built with Create-React-App include support for ES6 syntax, as well as several unofficial / not-yet-final forms of Javascript syntax such as Class Properties and JSX.  See the list of [language features and polyfills supported by Create-React-App](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#supported-language-features-and-polyfills) for more information.
+바깥 index.js의 첫 줄에서 counter의 상태 정보를 저장하는
+store를 생성하며, 그 store는 리듀서와 연결
+state의 값은 store에 모두 저장 <br>
 
-## Available Scripts
+바깥 index.js에서는 그 state 값을 읽어서 컴포넌트로 전달해줌
+컴포넌트는 값을 보여주는 틀일 뿐
 
-In the project directory, you can run:
+컴포넌트에서 +버튼을 누르면?
+(+버튼과 연결된 함수는 바깥 index에서  정의됨)
+함수를 호출한 counter 객체의 state와 그 함수와 연결된 action의
+타입이 reducer로 전달됨
 
-### `npm start`
+reducer에서는 store에 저장돼있는 현재 state와 전달 받은
+action 타입을 바탕으로 store의 state을 업데이트함
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<Question1>
+그런데 이 때 state는 여러 개의 필드를 포함할 수 있는지?
+state은 어떻게 정의하는 것인지?
+ex) Counter에서는 그냥 정수값
+ex) TodoList에서는 배열
+ex) 오목에서 squares, xIsNext, winner
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+<Question2>
 
-### `npm run build`
+<Question3>
+Game->Board->Square로 onClick함수 없이
+squares만 전달하면 되는건가?
+원래는(튜토리얼 삼목) Game내에 정의된 handleClick 함수를
+onClick property형식으로 Game->Board로, Board->Square로
+전달해서 Square의 value를 바꿨음
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+squares만 전달하는 방식으로 바꿔보자
