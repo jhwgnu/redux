@@ -19,6 +19,7 @@ npm start
 ### [1. Redux: The Single Immutable State Tree](https://egghead.io/lessons/javascript-redux-the-single-immutable-state-tree)
 리덕스를 사용하면, 모든 state를 (간단하든 복잡하든) 하나의 거대한 JavaScript 객체로 표현하게 됨
 
+
 ```
 ex) 간단한 카운터 -> 숫자 하나
 ex) 여러개의 간단한 카운터 -> 숫자의 list
