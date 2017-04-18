@@ -1,5 +1,6 @@
 <Basic Setting>
 react 설치 후
+
 ```
 git clone https://github.com/reactjs/redux
 cd redux/examples/counter
