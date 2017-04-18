@@ -16,7 +16,8 @@ npm start
 >**[Part 2: Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux) (27 free videos)**
 
 
-## [1. Redux: The Single Immutable State Tree](https://egghead.io/lessons/javascript-redux-the-single-immutable-state-tree)
+
+## 1. The Single Immutable State Tree
 리덕스를 사용하면, 모든 state를 (간단하든 복잡하든) 하나의 거대한 JavaScript 객체로 표현하게 됨
 
 
@@ -27,15 +28,15 @@ todos: todo의 리스트 (각 todo는 id, text, completed를 필드로 가지는
 visibilityFilter: SHOW_ALL or SHOW_COMPLETED or SHOW_ACTIVE <br>
 
 
-```
-First Principle of Redux: 애플리케이션에서 내에서 발생하는 모든 변화는 state(or statetree)라고 불리는 하나의 JavaScript 객체를 통해 관리된다
-```
+First Principle of Redux: 애플리케이션에서 내에서 발생하는 모든 변화는 state(or statetree)라고 불리는 하나의 JavaScript 객체를 통해 관리된다<br>
 
-## [2. Redux: Describing State Changes With Actions](https://egghead.io/lessons/javascript-redux-describing-state-changes-with-actions)
 
-```
-Second Principle of Redux: Statetree는 Read-Only이며, 마음대로 수정할 수 없다. State를 수정하려면 action을 dispatch해야 한다.
-```
+
+## 2. Describing State Changes With Actions
+
+
+Second Principle of Redux: Statetree는 Read-Only이며, 마음대로 수정할 수 없다. State를 수정하려면 action을 dispatch해야 한다<br>
+
 
 action은 state의 change를 나타내는 JavaScript 객체임<br>
 각 action 객체는 type 필드를 필수로 가짐(일반적으로 String 타입)<br>
@@ -48,7 +49,8 @@ Component가 action을 dispatch 한다!
 ```
 
 
-## [3. Redux: Pure and Impure Functions](https://egghead.io/lessons/javascript-redux-pure-and-impure-functions)
+
+## 3. Pure and Impure Functions
 Pure function: 인풋 인자에 아무 짓도 안함<br>
 Impure function: 인풋 인자에 뭔 짓을 함<br>
 
@@ -57,4 +59,58 @@ Redux의 함수들은 Pure해야 한다!
 ```
 
 
-## [4. Redux: The Reducer Function](https://egghead.io/lessons/javascript-redux-the-reducer-function)
+
+## 4. The Reducer Function
+
+Third Principle of Redux:<br>
+reducer는 previous state와 dispatched action을 받아서 next state를 도출하는 함수. Pure function이기 때문에 인풋으로 받는 객체를 수정하는게 아니라 새로운 객체를 만들어서 리턴함. <br>
+
+
+
+## 5. Writing a Counter Reducer with Tests
+
+```js
+//가장 기본적인 형태
+function counter(state, action){    
+    if(typeof state === 'undefined'){
+        return 0;
+    }
+    //이상한 state를 받으면 initial 값을 리턴
+
+    if(action.type === 'INCREMENT'){
+        return state + 1;
+    } else if(action.type === 'DECREMENT'){
+        return state - 1;
+    } else{
+        return state;
+    }
+}
+
+
+/*undefined state이 들어오는 case
+=> 인풋 argument에 default 인자를 줌으로써 해려*/
+function counter(state = 0, action){        
+    if(action.type === 'INCREMENT'){
+        return state + 1;
+    } else if(action.type === 'DECREMENT'){
+        return state - 1;
+    } else{
+        return state;
+    }
+    //함수 내부는 switch문을 쓰면 더 깔끔함
+}
+
+
+//이렇게 바꿔줄 수도 있음
+const counter = (state = 0, action) => {        
+    if(action.type === 'INCREMENT'){
+        return state + 1;
+    } else if(action.type === 'DECREMENT'){
+        return state - 1;
+    } else{
+        return state;
+    }
+    //함수 내부는 switch문을 쓰면 더 깔끔함
+}
+
+```
