@@ -88,7 +88,7 @@ function counter(state, action){
 
 
 /*undefined state이 들어오는 case
-=> 인풋 argument에 default 인자를 줌으로써 해려*/
+=> 인풋 argument에 default 인자를 줌으로써 해결*/
 function counter(state = 0, action){        
     if(action.type === 'INCREMENT'){
         return state + 1;
@@ -113,4 +113,34 @@ const counter = (state = 0, action) => {
     //함수 내부는 switch문을 쓰면 더 깔끔함
 }
 
+```
+
+
+
+## 6. Store Methods: getState(), dispatch(), and subscribe()
+
+```js
+import { createStore } from 'redux';
+// const { createStore } = Redux;
+// var createStore = Redux.createStore;
+// 다 똑같음
+
+const counter = (state = 0, action) => {
+    switch (action.type) {
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1;
+        default:
+            return state;
+    }
+}
+
+const store = createStore(counter);
+
+console.log(store.getState());
+store.dispatch({ type: 'INCREMENT' })
+console.log(store.getState());
+
+store.subscribe(())
 ```
