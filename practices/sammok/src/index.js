@@ -8,20 +8,24 @@ const initialState = {
     squares: Array(9).fill(null),
     xIsNext: true
 }
+
+const RESTART = {
+
+}
+
 const sammok = (state = initialState, action) => {
     switch (action.type) {
         case 'RESTART':
 
         case 'CLICKSQUARE':
 
-            break;
         default:
-
+            return state;
     }
 }
 
 // Component========================================
-class Game extends React.Component {
+class Board extends React.Component {
     renderSquare(i) {
       return (
           <button className="square">
@@ -62,10 +66,12 @@ class Game extends React.Component {
   }
 }
 
-// Render========================================
+const Board = ({squares, })
 
+
+// Render========================================
 ReactDOM.render(
-  <Game />,
+  <Board />,
   document.getElementById('root')
 );
 
