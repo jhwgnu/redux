@@ -4,7 +4,6 @@ const Board = ({ squares, status, onSquare, onRestart }) => (
     <div>
           <h3>{status}</h3>
 
-
           <div className="board-row">
           <button className="square" id="0_0" onClick={()=>onSquare(0,0)}>{squares[0][0]}</button>
           <button className="square" id="0_1" onClick={()=>onSquare(0,1)}>{squares[0][1]}</button>
@@ -404,7 +403,6 @@ const Board = ({ squares, status, onSquare, onRestart }) => (
           <button className="square" id="18_17" onClick={()=>onSquare(18,17)}>{squares[18][17]}</button>
           <button className="square" id="18_18" onClick={()=>onSquare(18,18)}>{squares[18][18]}</button>
           </div>
-
 
           <button onClick={onRestart}> Restart </button>
      </div>

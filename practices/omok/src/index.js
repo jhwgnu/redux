@@ -30,7 +30,7 @@ const actionHandler = (state = initialState, action) => {
             }
             state.xIsNext = false;
             state.done = false;
-            state.status = 'Next: X'
+            state.status = 'Next: O'
             return state;
 
         case 'CLICKSQUARE':
